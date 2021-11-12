@@ -1,0 +1,4 @@
+# generated content
+bin
+coverage
+*.lcov

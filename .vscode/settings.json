@@ -1,0 +1,16 @@
+{
+    "deno.enable": true,
+    "deno.lint": true,
+    "deno.unstable": false,
+    "editor.defaultFormatter": "EditorConfig.EditorConfig",
+    "editor.formatOnSave": true,
+    "triggerTaskOnSave.tasks": {
+        "test": [
+            "src/**/*.ts",
+        ],
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "markdown.extension.toc.levels": "2..6"
+}

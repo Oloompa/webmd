@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "autoClearConsole": true,
+    "tasks": [
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "make test",
+            "options": {
+                "shell": {
+                    "args": []
+                }
+            },
+            "problemMatcher": [
+                "$deno-test"
+            ],
+        }
+    ]
+}
