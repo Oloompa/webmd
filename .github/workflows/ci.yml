@@ -15,7 +15,7 @@ jobs:
           deno-version: v1.x
 
       - name: Check formatting
-        run: deno fmt --check
+        run: deno fmt --check src
 
       - name: Analyze code
         run: make lint
