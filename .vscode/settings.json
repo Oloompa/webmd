@@ -12,5 +12,12 @@
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
-    "markdown.extension.toc.levels": "2..6"
+    "markdown.extension.toc.levels": "2..6",
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "cSpell.words": [
+        "Deno",
+        "denoland"
+    ]
 }

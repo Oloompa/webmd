@@ -3,16 +3,6 @@ name: CI
 on: [ push, pull_request ]
 
 jobs:
-  cog_check_job:
-    runs-on: ubuntu-latest
-    name: check conventional commit compliance
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Conventional commit check
-        uses: oknozor/cocogitto-action@v1
   build:
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +20,7 @@ jobs:
       - name: Analyze code
         run: make lint
 
-      - name: Install deps
+      - name: Install dependencies
         run: make reload.dependencies
 
       - name: Run unit and integration tests
@@ -38,21 +28,3 @@ jobs:
 
       - name: Generate coverage report
         run: make coverage
-  semver:
-    runs-on: ubuntu-latest
-    name: auto versioning
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Semver release
-        uses: oknozor/cocogitto-action@v1
-        id: release
-        with:
-          release: true
-          git-user: 'CI Bot'
-          git-user-email: 'bot@webmd.org'
-
-      # The version number is accessible as a github action output
-      - name: Print version
-        run: "echo '${{ steps.release.outputs.version }}'"
