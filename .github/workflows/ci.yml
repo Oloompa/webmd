@@ -40,7 +40,7 @@ jobs:
         run: make coverage
   semver:
     runs-on: ubuntu-latest
-    name: check conventional commit compliance
+    name: auto versioning
     steps:
       - uses: actions/checkout@v2
         with:
