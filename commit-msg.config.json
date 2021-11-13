@@ -1,6 +1,5 @@
 {
     "enabled": true,
-    "revert": true,
     "length": {
         "min": 1,
         "max": 52
@@ -13,8 +12,8 @@
         "fix",
         "perf",
         "refactor",
+        "revert",
         "style",
-        "test",
-        "chore"
+        "test"
     ]
 }
