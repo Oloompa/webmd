@@ -20,6 +20,9 @@ jobs:
       - name: Analyze code
         run: make lint
 
+      - name: Install deps
+        run: make reload.dependencies
+
       - name: Run unit and integration tests
         run: make test
 
