@@ -38,3 +38,18 @@ jobs:
 
       - name: Generate coverage report
         run: make coverage
+  semver:
+    runs-on: ubuntu-latest
+    name: check conventional commit compliance
+    steps:
+      - name: Semver release
+        uses: oknozor/cocogitto-action@v1
+        id: release
+        with:
+          release: true
+          git-user: 'CI Bot'
+          git-user-email: 'bot@webmd.org'
+
+      # The version number is accessible as a github action output
+      - name: Print version
+        run: "echo '${{ steps.release.outputs.version }}'"
