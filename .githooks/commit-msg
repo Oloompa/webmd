@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# SETTINGS
 SCOPE_MAX_LENGTH=20
 TITLE_MAX_LENGTH=60
 TYPES=(build ci docs feat fix perf refactor revert style test)
@@ -11,29 +12,26 @@ for type in ${TYPES[@]}; do
 done
 regexp="${regexp%|})"
 # add optional scope check
-regexp="${regexp}(?>\((.{1,${SCOPE_MAX_LENGTH}})\))?"
+regexp="${regexp}(\((.{1,${SCOPE_MAX_LENGTH}})\))?"
 # add optional breaking check
 regexp="${regexp}!?: "
 # add title check
-regexp="${regexp}(.{1,$TITLE_MAX_LENGTH})"
-
-echo $regexp
+regexp="${regexp}(.{1,$TITLE_MAX_LENGTH})$"
 
 # get first line of the commit message
 commit_file=$1
 commit_message=$(head -n1 $commit_file)
 
-echo $commit_message
-
 # run check
 if [[ ! $commit_message =~ $regexp ]]; then
     echo -e "\n\e[31m[Invalid Commit Message]"
     echo -e "------------------------\033[0m\e[0m"
-    echo -e "Valid types: \e[36m${types[@]}\033[0m"
+    echo -e "Valid types: \e[36m${TYPES[@]}\033[0m"
     echo -e "Max length (scope): \e[36m$SCOPE_MAX_LENGTH\033[0m"
     echo -e "Max length (title): \e[36m$TITLE_MAX_LENGTH\033[0m"
     echo -e "\e[37mRegex: \e[33m$regexp\033[0m"
     echo -e "\e[37mActual commit message: \e[33m\"$commit_message\"\033[0m"
+    echo -e "You should probably check conventional commit specs: https://www.conventionalcommits.org/en/v1.0.0/"
 
     # exit with an error
     exit 1

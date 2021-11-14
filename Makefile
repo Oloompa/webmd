@@ -49,6 +49,7 @@ help: ## display command list
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  $(shell tput setaf 3)make <command>$(shell tput sgr0)\033[36m\033[0m\n"} /^[a-zA-Z_.-]+:.*?##/ { printf "  \033[36m%-30s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 ##@ SETUP
+
 init: ## init the repo for the first time
 	git config core.hooksPath .githooks
 
