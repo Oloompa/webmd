@@ -4,6 +4,7 @@ From markdown to website.
 
 - [Goal](#goal)
 - [Development](#development)
+  - [First time](#first-time)
   - [Makefile](#makefile)
   - [Commits](#commits)
 
@@ -13,6 +14,10 @@ I need a static site generator for my next website. I needed also to experiment 
 
 ## Development
 
+### First time
+
+First time you setup this repo, and before any work, please run `make init`. It will setup git hooks. It will setup automatic quality checks.
+
 ### Makefile
 
 All useful commands for project are inside a makefile. To list them you can type `make help` or just `make`.
@@ -20,8 +25,6 @@ All useful commands for project are inside a makefile. To list them you can type
 ### Commits
 
 Project follow [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) specification.
-
-You need [jq](https://stedolan.github.io/jq/download/) in order to lint your commit message automatically.
 
 Here is a short desciption of types
 
