@@ -8,7 +8,7 @@ TYPES=(build ci docs feat fix perf refactor revert style test)
 regexp="^("
 # add type check
 for type in ${TYPES[@]}; do
-    regexp="$regexp$type|"
+  regexp="$regexp$type|"
 done
 regexp="${regexp%|})"
 # add optional scope check
@@ -24,15 +24,19 @@ commit_message=$(head -n1 $commit_file)
 
 # run check
 if [[ ! $commit_message =~ $regexp ]]; then
-    echo -e "\n\e[31m[Invalid Commit Message]"
-    echo -e "------------------------\033[0m\e[0m"
-    echo -e "Valid types: \e[36m${TYPES[@]}\033[0m"
-    echo -e "Max length (scope): \e[36m$SCOPE_MAX_LENGTH\033[0m"
-    echo -e "Max length (title): \e[36m$TITLE_MAX_LENGTH\033[0m"
-    echo -e "\e[37mRegex: \e[33m$regexp\033[0m"
-    echo -e "\e[37mActual commit message: \e[33m\"$commit_message\"\033[0m"
-    echo -e "You should probably check conventional commit specs: https://www.conventionalcommits.org/en/v1.0.0/"
+  echo -e "\n\e[1;31m💥 Invalid Commit Message 💥\033[0m\e[0m\n"
+  echo -e "\e[37mActual commit message: \e[33m\"$commit_message\"\033[0m\n"
+  echo -e "-------- valid message format --------\e[36m"
+  echo -e "<type>[optional scope]: <description>\n"
+  echo -e "[optional body]\n"
+  echo -e "[optional footer(s)]\033[0m"
+  echo -e "--------------------------------------\n"
+  echo -e "valid types: \e[36m${TYPES[@]}\033[0m"
+  echo -e "max length (scope): \e[36m$SCOPE_MAX_LENGTH\033[0m"
+  echo -e "max length (title): \e[36m$TITLE_MAX_LENGTH\033[0m\n"
+  echo -e "\e[37mregex used: \e[33m$regexp\033[0m"
+  echo -e "see https://www.conventionalcommits.org/en/v1.0.0/"
 
-    # exit with an error
-    exit 1
+  # exit with an error
+  exit 1
 fi
