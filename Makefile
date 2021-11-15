@@ -52,6 +52,7 @@ help: ## display command list
 
 init: ## init the repo for the first time
 	git config core.hooksPath .githooks
+	$(MAKE) reload.dependencies
 
 ##@ DEPENDENCIES
 
