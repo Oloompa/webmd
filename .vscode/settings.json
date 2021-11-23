@@ -1,12 +1,13 @@
 {
     "deno.enable": true,
     "deno.lint": true,
-    "deno.unstable": false,
+    "deno.unstable": true,
     "editor.defaultFormatter": "EditorConfig.EditorConfig",
     "editor.formatOnSave": true,
     "triggerTaskOnSave.tasks": {
         "test": [
             "src/**/*.ts",
+            "test/**/*.ts",
         ],
     },
     "[markdown]": {
@@ -19,5 +20,10 @@
     "cSpell.words": [
         "Deno",
         "denoland"
-    ]
+    ],
+    "deno.suggest.imports.hosts": {
+        "https://deno.land": true
+    },
+    "deno.suggest.completeFunctionCalls": true,
+    "deno.codeLens.referencesAllFunctions": true
 }

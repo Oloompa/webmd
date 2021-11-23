@@ -5,10 +5,10 @@ MAKEFLAGS += --silent # Hey make, please shut up !
 # CONSTANTS
 COVERAGE_DIR = ./coverage
 COVERAGE_FILE = ./coverage.lcov
-ROOT_SCRIPT = ./src/generate-static.ts
-BINARY_NAME = generate-static
+ROOT_SCRIPT = ./src/main.ts
+BINARY_NAME = webmd
 
-.PHONY: help coverage
+.PHONY: help coverage test
 
 # FUNCTIONS
 # see https://coderwall.com/p/cezf6g/define-your-own-function-in-a-makefile
@@ -83,17 +83,19 @@ compile: ## package into an executable file
 ##@ RUN
 
 run: ## run
-	deno run --lock=lock.json --cached-only $(ROOT_SCRIPT)
+	deno run --lock=lock.json --cached-only --allow-read $(ROOT_SCRIPT) --src=ee --out=hh
 
 dev: ## run in watch mode
-	deno run --lock=lock.json --cached-only $(ROOT_SCRIPT)
+	deno run --lock=lock.json --cached-only --allow-read $(ROOT_SCRIPT) --src=ee --out=hh
 
 ##@ TEST
 
 test: ## Launch unit tests
+	echo plop
+	echo deno test --lock=lock.json --cached-only --coverage=$(COVERAGE_DIR)
 	deno test --lock=lock.json --cached-only --coverage=$(COVERAGE_DIR)
 
 ##@ VERSIONNING
 
-upgrade:
+upgrade: ## plop
 	deno upgrade
